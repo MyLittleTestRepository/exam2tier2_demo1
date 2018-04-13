@@ -19,3 +19,10 @@
 	<?endforeach?>
 </ul>
 <?endif?>
+<?$this->SetViewTarget('prices')?>
+<div style="color:red; margin: 34px 15px 35px 15px">
+	<p><?=GetMessage('PRICES')?></p>
+	<p><?=GetMessage('PRICES_MAX')?><?=$arResult['MAX']?></p>
+	<p><?=GetMessage('PRICES_MIN')?><?=$arResult['MIN']?></p>
+</div>
+<?$this->EndViewTarget()?>

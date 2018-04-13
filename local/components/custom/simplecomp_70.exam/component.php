@@ -86,6 +86,8 @@ if($this->StartResultCache())
 		return;
 	}
 	
+	$arResult['MAX']=null;
+	$arResult['MIN']=null;
 	while($product=$Res->Fetch())
 	{
 		$arResult['PRODUCTS'][$product['ID']]['NAME']=$product['NAME'];
@@ -93,7 +95,10 @@ if($this->StartResultCache())
 		$arResult['PRODUCTS'][$product['ID']]['PROPERTY_MATERIAL']=$product['PROPERTY_MATERIAL_VALUE'];
 		$arResult['PRODUCTS'][$product['ID']]['PROPERTY_ARTNUMBER']=$product['PROPERTY_ARTNUMBER_VALUE'];
 		$arResult['SECTIONS'][$product['IBLOCK_SECTION_ID']]['PRODUCTS_ID'][$product['ID']]=$product['ID'];
-		
+		$arResult['MAX']=max($arResult['MAX'],$product['PROPERTY_PRICE_VALUE']);
+		if(!$arResult['MIN'])
+			$arResult['MIN']=$product['PROPERTY_PRICE_VALUE'];
+		$arResult['MIN']=min($arResult['MIN'],$product['PROPERTY_PRICE_VALUE']);
 	}
 	
 	if(count($arResult['PRODUCTS']))
@@ -101,7 +106,11 @@ if($this->StartResultCache())
 		$arResult['COUNT']=count($arResult['PRODUCTS']);
 		$this->setResultCacheKeys(['COUNT']);
 	}
-	
+	if($arResult['MAX'])
+		$this->setResultCacheKeys(['MAX']);
+	if($arResult['MIN'])
+		$this->setResultCacheKeys(['MIN']);
+
 	$this->includeComponentTemplate();
 }
 if($arResult['COUNT'])
