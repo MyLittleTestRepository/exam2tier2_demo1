@@ -14,7 +14,10 @@ $this->setFrameMode(true);
 ?>
 <?
 //ссылка на страницу станицу exampage 
-//$url = ...
+$url = $arResult['URL_TEMPLATES']['exampage'];
+$arRepl=["#PARAM1#"=>123,
+		 "#PARAM2#"=>456];
+$url=str_replace(array_keys($arRepl),$arRepl,$url);
 ?><?=GetMessage("EXAM_TEXT_LINK_CP_PHOTO")?> <a href="<?=$url?>"><?=$url?></a>  
 
 <?$APPLICATION->IncludeComponent(
