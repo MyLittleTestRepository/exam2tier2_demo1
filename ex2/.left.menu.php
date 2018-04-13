@@ -13,6 +13,13 @@ $aMenuLinks = Array(
 		Array(), 
 		Array(), 
 		"" 
+	),
+	Array(
+		"Комплексный компонент 25", 
+		"/ex2/complexcomponent_25/", 
+		Array(), 
+		Array(), 
+		"" 
 	)
 );
 ?>

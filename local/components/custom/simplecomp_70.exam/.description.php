@@ -5,7 +5,7 @@ $arComponentDescription = array(
 	"NAME" => GetMessage("SIMPLECOMP_EXAM2_NAME"),
 	"PATH" => array(
 		"NAME" => GetMessage("NAME"),
-		"ID" => "ex2simple",
+		"ID" => "exam2",
 	),
 );
 ?>
